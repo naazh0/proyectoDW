@@ -1,0 +1,15 @@
+{% extends "noticias/base.html" %}
+{% load static %}
+{% block content %}
+  <section>
+    <div class="container">
+      <div class="col-lg-12">
+        <h1>{{noticia_detalle.name}} <small>{{noticia_detalle.categoria}}</small></h1>
+        <p><em>{{noticia_detalle.created}}</em></p>
+        <img src="{{noticia_detalle.imagen.url}}" alt="" class="img-responsive img-thumbnail pull-left img-margin-right">
+        {{noticia_detalle.descripcion}}
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+ 
