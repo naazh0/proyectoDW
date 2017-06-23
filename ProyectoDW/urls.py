@@ -21,6 +21,6 @@ from django.conf import settings
 
 urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('noticias.urls')),
-    #url(r'^noticias/', include('noticias.urls',namespace='noticias')),
+    url(r'^', include('seguridad.urls')),
+    url(r'^noticias/', include('noticias.urls',namespace='noticias')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
