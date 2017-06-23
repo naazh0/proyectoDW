@@ -33,7 +33,7 @@
               {% thumbnail noticia.imagen "170x170" crop="center" as im %}
                 <img src="{{ im.url }}" alt="" class="" style="">
               {% endthumbnail %}
-                <p><a href="{% url 'detalle_noticia' noticia.id %}">{{ noticia.name }}</a></p>
+                <p><a href="{% url 'detalle' noticia.id %}">{{ noticia.name }}</a></p>
                 <p><span class="label label-info">{{ noticia.categoria }}</span></p>
                 </div>
                 {% endif %}
