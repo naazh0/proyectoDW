@@ -1,0 +1,55 @@
+{% extends "noticias/base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+  <section>
+    <div class="container">
+      <div class="col-lg-9 col-sm-12">
+        <div class="well row">
+
+
+ 
+  
+ 
+
+
+          <p class="text-right"><button class="btn btn-primary btn-lg">Inscribete!</button></p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 aside">
+            <div class="row">
+            {% for noticia2 in noticia_destacada %}
+              <div class="col-sm-4 col-lg-12">
+                <img src="{{noticia2.imagen.url}}" alt="" class="img-thumbnail">
+              </div>
+              <div class="col-sm-8 col-lg-12">            
+                <h4>{{noticia2.name}}</h4>
+                <p class="text-justify">{{noticia2.descripcion}}</p>
+              </div>
+            
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="row">
+              {% for noticia in object_list %}
+                {% if noticia2.name != noticia.name  %}
+              <div class="col-xs-6 col-sm-4">
+              {% thumbnail noticia.imagen "170x170" crop="center" as im %}
+                <img src="{{ im.url }}" alt="" class="" style="">
+              {% endthumbnail %}
+                <p><a href="{% url 'detalle' noticia.id %}">{{ noticia.name }}</a></p>
+                <p><span class="label label-info">{{ noticia.categoria }}</span></p>
+                </div>
+                {% endif %}
+              {% endfor %} 
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 visible-lg">
+        <img src="http://placehold.it/400x800" alt="" class="img-responsive">
+      </div>
+    </div>
+  </section>
+  {% endblock %}
