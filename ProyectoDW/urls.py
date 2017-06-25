@@ -23,13 +23,12 @@ from django.contrib.auth.views import login, logout
 
 urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
-    #url(r'^', include('seguridad.urls')),
     url(r'^', include('noticias.urls',namespace='noticias')),
-    #url(r'^$', views.index, name='index'),
-    url(r'^signup$', views.signup, name='signup'),
+	url(r'^signup$', views.signup, name='signup'),
     url(r'^login$', login, {'template_name':'login.html'}, name="login"),
     url(r'^home$', views.home, name='home'),
     url(r'^logout$', logout, {'template_name': 'noticias/main.html', }, name="logout"),
     url(r'^perfil$', views.perfil, name='perfil'),
-    url(r'^detalle/(?P<pk>\d+)$', views.detalle_noticia, name='detalle'),
+    url(r'^detalle/(?P<pk>\d+)$', views.detalle_noticia, name='detalle'),     
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

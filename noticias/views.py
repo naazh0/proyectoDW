@@ -7,18 +7,12 @@ from django.http.response import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import FormView
 from forms import SignUpForm
 
 
 
-#def index(request):
 
-#	object_list = Noticia.objects.order_by('-created')[:7]
-#	noticia_destacada = Noticia.objects.filter(is_destacada=True).order_by('-created')[:1]
-
-#	template = 'noticias/index.html'
-	
-#	return render(request, template, {'object_list':object_list, 'noticia_destacada':noticia_destacada})
 
 
 def detalle_noticia(request, pk):
