@@ -21,33 +21,56 @@
     <![endif]-->
   </head>
   <body>
-  <header>
+
+
+    <header>
 
     <div class="container">
-      <div class="row">        
-        <div class="col-sm-6 col-xs-7">
-      
-      <!-- User info -->
-      <ul class="user-info pull-left">          
-        <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt="" src="{% static 'images/logo_3.png' %}"> Usuario <span class="caret"></span></a>
+      <div class="row">
+
+        <nav class="navbar navbar-inverse navbar-cutom-menu">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- <a class="navbar-brand" href="#">Brand</a> -->
+              <a href="#" class="navbar-brand brand">
+                <img src="{% static 'images/condominio.png' %}" alt="Logo UNAB"  >
+              </a>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
         
-        <!-- User action menu -->
-        <ul class="dropdown-menu">
-          
-          <li><a href="#/"><i class="icon-user"></i><a href="{% url 'perfil' %}">Perfil</a></a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="icon-cog"></i>Configuración de cuneta</a></li>
-          <li><a href="#"><i class="icon-logout"></i><a href="{% url 'logout' %}">Salir</a></li>
-        </ul>
-        <!-- /user action menu -->
-        
-        </li>
-      </ul>
-      <!-- /user info -->
-      
-      </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Servicio A</a></li>
+                    <li><a href="#">Servicio B</a></li>
+                    <li><a href="#">Servicio C</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Todos los servicios</a></li>
+                  </ul>
+                <li><a href="#">Contacto</a></li>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
       </div>
     </div>
+
   </header>
 
   {% block content %}{% endblock %}

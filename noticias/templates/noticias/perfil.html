@@ -1,38 +1,95 @@
-{% extends "noticias/base.html" %}
+{% extends "noticias/basepropietario.html" %}
+{% load static %}
 {% load thumbnail %}
 {% block content %}
 
-<table>
+
+<header>
+      <div class="container">
+      <div class="row">
+
+        <nav class="navbar navbar-inverse navbar-cutom-menu">
+          
+
+          <div class="navbar-header">
+                  <ul class="user-info pull-left">          
+                    <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt="" src="{% static 'images/logo_3.png' %}"> {{ user.username }} <span class="caret"></span></a>
+        
+        <!-- User action menu -->
+                      <ul class="dropdown-menu">
+                        <li><a href="#/"><i class="icon-user"></i><a href="{% url 'perfil' %}">Perfil</a></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="icon-cog"></i>Configuración de cuneta</a></li>
+                        <li><a href="#"><i class="icon-logout"></i><a href="{% url 'logout' %}">Salir</a></li>
+                      </ul>
+                  </ul>
+          </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
+        
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Servicio A</a></li>
+                    <li><a href="#">Servicio B</a></li>
+                    <li><a href="#">Servicio C</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Todos los servicios</a></li>
+                  </ul>
+                <li><a href="#">Contacto</a></li>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+      </div>
+    </div>
+
+
+  </header>
+
+  <body>
+
+    <table>
         <tr>
-            <td>{{ user.username.label_tag }}</td>
+            <td>Usuario: </td>
             <td>{{ user.username }}</td>
         </tr>
  
         <tr>
-            <td>{{ user.email.label_tag }}</td>
+            <td> Correo: </td>
             <td>{{ user.email }}</td>
         </tr>
  
         <tr>
-            <td>{{ user.first_name.label_tag }}</td>
+            <td> Nombre: </td>
             <td>{{ user.first_name }}</td>
         </tr>
  
         <tr>
-            <td>{{ user.last_name.label_tag }}</td>
+            <td> Apellido: </td>
             <td>{{ user.last_name }}</td>
         </tr>
  
         <tr>
-            <td>{{ user.date_joined.label_tag }}</td>
+            <td> Creado: </td>
             <td>{{ user.date_joined }}</td>
         </tr>
  
         <tr>
-            <td>{{ user.last_login.label_tag }}</td>
+            <td> Último ingreso: </td>
             <td>{{ user.last_login }}</td>
         </tr>
  
     </table>
 
-{% endblock %}
+  </body>
+  {% endblock %}
+
+
