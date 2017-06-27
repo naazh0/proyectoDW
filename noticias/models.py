@@ -25,3 +25,27 @@ class Noticia(models.Model):
     def __str__(self):
         return self.name
 
+class AdminCondominio(models.Model):
+    name = models.CharField(max_length=144)
+    rut = models.CharField(max_length=15)
+    correo = models.CharField(max_length=144)
+    fono = models.CharField(max_length=144)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class Copropietario(models.Model):
+    name = models.CharField(max_length=144)
+    rut = models.CharField(max_length=144)
+    documento = models.FileField(upload_to="docs", null=True, blank=True)
+    correo = models.CharField(max_length=144)
+    fono = models.CharField(max_length=144)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self):
+        return self.name
+

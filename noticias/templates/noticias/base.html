@@ -1,5 +1,5 @@
 {% load static %}
-
+{% block header %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,8 +20,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style="background-color: black; background-attachment: fixed; background-repeat: no-repeat; background-image: url(&quot;http://www.avenir.co.cr/contenido/wp-content/uploads/2016/11/slider4.jpg&quot;); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit; z-index: 20">
-
+  
 
 
 
@@ -42,7 +41,7 @@
                 <span class="icon-bar"></span>
               </button>
               <!-- <a class="navbar-brand" href="#">Brand</a> -->
-              <a href="#" class="navbar-brand brand">
+              <a href="{% url 'home' %}" class="navbar-brand brand">
                 <img src="{% static 'images/condominio.png' %}" alt="Logo condominio"  >
               </a>
 
@@ -75,7 +74,7 @@
     </div>
 
   </header>
-
+  {% endblock %}
   {% block content %}{% endblock %}
   {% block footer %}
   <footer>
@@ -90,5 +89,21 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
   {% endblock %}
+
+<script type="text/javascript">
+      $('.delete').on('click',function(e){
+          e.preventDefault();
+          var name_copro = $(this).data('copro-name');
+          //console.log($(this).attr('data-movie-name'));
+          var c = confirm("Estas seguro de eliminar a: " + name_copro + "??") ;
+          console.log(c);
+          if (c == true) {
+
+              location.href = $(this).attr('href');
+
+          }
+      });
+    </script>
+    
   </body>
 </html>

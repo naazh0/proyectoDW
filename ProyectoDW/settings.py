@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'noticias',
     'sorl.thumbnail',
     'seguridad',
+    'registration'
 ]
+
+ACCOUNT_ACTIVATION_DAYS = 7
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

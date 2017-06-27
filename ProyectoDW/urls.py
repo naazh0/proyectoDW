@@ -27,9 +27,13 @@ urlpatterns = [
 	url(r'^signup$', views.signup, name='signup'),
     url(r'^login$', login, {'template_name':'login.html'}, name="login"),
     url(r'^home$', views.home, name='home'),
-    url(r'^$', logout, {'template_name': 'noticias/main.html', }, name="logout"),
+    url(r'^logout$', logout, {'template_name': 'noticias/main.html', }, name="logout"),
     url(r'^perfil$', views.perfil, name='perfil'),
     url(r'^$', views.main, name='main'),
-    url(r'^detalle/(?P<pk>\d+)$', views.detalle_noticia, name='detalle'),     
+    url(r'^detalle/(?P<pk>\d+)$', views.detalle_noticia, name='detalle'),
+    url(r'^new/$', views.editar_copro, name='editar_copro'),
+    url(r'^edit/(?P<pk>\d+)$', views.copro_update, name='copro_update'),
+    url(r'^delete/(?P<pk>\d+)$', views.copro_delete, name='copro_delete'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

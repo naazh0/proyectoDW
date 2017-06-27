@@ -2,19 +2,22 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Categoria, Noticia
+from .models import AdminCondominio, Copropietario
 
 # Register your models here.
 
-class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('id','name','created','modified')
+
+
+class AdminCondoAdmin(admin.ModelAdmin):
+    list_display = ('id','name','rut','correo','fono','created','modified')
     #list_filter = ('owner','active')
     search_fields = ('id',)
 
-class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ('id','name','descripcion','categoria','created','modified', 'is_destacada')
+class CopropietarioAdmin(admin.ModelAdmin):
+    list_display = ('id','name','rut','correo','fono','created','modified')
     #list_filter = ('owner','active')
     search_fields = ('id',)
 
-admin.site.register(Categoria, CategoriaAdmin)
-admin.site.register(Noticia, NoticiaAdmin)
+
+admin.site.register(AdminCondominio, AdminCondoAdmin)
+admin.site.register(Copropietario, CopropietarioAdmin)

@@ -1,0 +1,21 @@
+{% extends "noticias/base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+    <div class="container">
+      <div class="row">
+
+          <div class="col-md-12">
+            <h1>Gestión Copropietarios</h1>
+            <hr>
+            <form method="post">{% csrf_token %}
+            {{ form}}
+            <br>
+            <input type="submit"  value="Aceptar" class="btn btn-primary pull-right btn-lg">
+            </form>
+
+          </div>
+      </div>
+    </div>
+
+{% endblock %}
