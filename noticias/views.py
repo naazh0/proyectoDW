@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from noticias.models import Copropietario
 from django.template.context import RequestContext
 from django.http.response import HttpResponseRedirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 from forms import SignUpForm
 from .forms import CopropForm
 
@@ -24,13 +26,36 @@ def main(request):
 
 @login_required()
 def home(request):
-	object_list = Copropietario.objects.order_by('-created')
-	return render_to_response('noticias/index.html', {'user': request.user, 'object_list':object_list}, request)
+    copropietario = User.objects.all()
+    return render_to_response('noticias/index.html', {'copropietario': copropietario, 'user':request.user}, request)
 
 
 @login_required()
 def perfil(request):
 	return render_to_response('noticias/perfil.html', {'user': request.user}, request)
+
+
+
+@login_required()
+def copro_delete(request, pk) :
+    copropietario = get_object_or_404(User, pk=pk)
+    copropietario.delete()
+    return HttpResponseRedirect(reverse('home'))
+
+@login_required()
+def copro_update(request, pk) :
+    template_name = 'noticias/editar_copro.html'
+    # movie = Movie.objects.get(pk=pk)
+    copropietario = get_object_or_404(User, pk=pk)
+    # select * from movie WHERE id = xx
+
+    form = CopropForm(request.POST or None, instance=copropietario)
+
+    if form.is_valid() :
+        form.save()
+        return HttpResponseRedirect(reverse('home'))
+
+    return render(request, template_name, {'form': form})
 
 @login_required()
 def editar_copro(request):
@@ -44,55 +69,48 @@ def editar_copro(request):
     return render_to_response('noticias/editar_copro.html', {'user': request.user, 'form':form}, request)
 
 @login_required()
-def copro_delete(request, pk) :
-    copropietario = get_object_or_404(Copropietario, pk=pk)
-    copropietario.delete()
-    return HttpResponseRedirect(reverse('home'))
+def signup_copropietario(request):
+    
 
-@login_required()
-def copro_update(request, pk) :
-    template_name = 'noticias/editar_copro.html'
-    # movie = Movie.objects.get(pk=pk)
-    copropietario = get_object_or_404(Copropietario, pk=pk)
-    # select * from movie WHERE id = xx
-
-    form = CopropForm(request.POST or None, instance=copropietario)
+    form = SignUpForm(request.POST or None)
 
     if form.is_valid() :
         form.save()
-        return HttpResponseRedirect(reverse('home'))
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password')
+        user = User.objects.get(username=username)
+        
+        
+        user.set_password(raw_password)
+        user.is_staff = False
+        user.save()
+        return redirect('main')
 
-    return render(request, template_name, {'form': form})
-
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():  
- 
-            
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            email = form.cleaned_data["email"]
-            first_name = form.cleaned_data["first_name"]
-            last_name = form.cleaned_data["last_name"]
- 
-            
-            
-            
-            user = User.objects.create_user(username, email, password)
-            user.first_name = first_name
-            user.last_name = last_name
- 
-            
-            user.save()
- 
-            return HttpResponseRedirect(reverse('index'))
     else:
         form = SignUpForm()
- 
-    data = {
-        'form': form,
-    }
-    return render_to_response('noticias/signup.html', data, request)
+    return render(request, 'noticias/signup_copropietario.html', {'form': form})
+    
+@login_required()
+def signup_administrador(request):
+    
+
+    form = SignUpForm(request.POST or None)
+
+    if form.is_valid() :
+        form.save()
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password')
+        user = User.objects.get(username=username)
+        user.set_password(raw_password)
+        user.is_staff = True
+        user.save()
+        return redirect('main')
+
+    else:
+        form = SignUpForm()
+    return render(request, 'noticias/signup_administrador.html', {'form': form})
+
+    
+
 
 

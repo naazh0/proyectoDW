@@ -7,7 +7,7 @@ from .models import Copropietario
 class SignUpForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'password', 'email', 'first_name', 'last_name']
+        fields = ['username', 'password', 'email', 'first_name', 'last_name', 'id']
         widgets = {
             'password': forms.PasswordInput(),
         }

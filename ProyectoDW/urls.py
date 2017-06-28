@@ -24,7 +24,8 @@ from django.contrib.auth.views import login, logout
 urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('noticias.urls',namespace='noticias')),
-	url(r'^signup$', views.signup, name='signup'),
+	url(r'^signup$', views.signup_copropietario, name='signup_copropietario'),
+    url(r'^signup$', views.signup_administrador, name='signup_administrador'),
     url(r'^login$', login, {'template_name':'login.html'}, name="login"),
     url(r'^home$', views.home, name='home'),
     url(r'^logout$', logout, {'template_name': 'noticias/main.html', }, name="logout"),

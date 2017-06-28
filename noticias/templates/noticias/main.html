@@ -18,21 +18,19 @@
 
 {% block content %}
 
-<body>
+<body >
 
        <div class="tp-parallax-wrap" style="position: absolute; visibility: visible; left: 577px; top: 377px; z-index: 6;"><a href="{% url 'login' %}" ><button type="button" class="btn btn-success">Login</button></a></div>
 
-       <a href="{% url 'signup' %}">Sign Up</a>
+       <div style="position: absolute; visibility: visible; left: 650px; top: 377px; z-index: 6;"><a href="{% url 'signup_copropietario' %}"><button class="btn btn-primary">Nuevo copropietario</button></a></div>
+       <br>
 
 
        
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
 
-<!--
-    <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">Sign Up</button></a>
-    <a href="{% url 'login' %}"><button type="button" class="btn btn-success">Login</button></a> 
--->
+
 </body>
  
 {% endblock %}

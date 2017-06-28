@@ -56,10 +56,14 @@
 
   <body>
 
+<div class="container">
+      <div class="col-lg-9 col-sm-12">
+        <div class="well row">
+
     <table>
         <tr>
             <td>Usuario: </td>
-            <td>{{ user.username }}</td>
+            <td>{{user.username}}</td>
         </tr>
  
         <tr>
@@ -88,6 +92,12 @@
         </tr>
  
     </table>
+    <p class="text-right"><a href="{% url 'copro_update' user.id %}"><button class="btn btn-primary btn-lg">Editar</button></a></p>
+ </div>
+ </div>
+ </div>
+
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
   </body>
   {% endblock %}
