@@ -46,10 +46,10 @@ def copro_delete(request, pk) :
 def copro_update(request, pk) :
     template_name = 'noticias/editar_copro.html'
     # movie = Movie.objects.get(pk=pk)
-    copropietario = get_object_or_404(User, pk=pk)
+    user = get_object_or_404(User, pk=pk)
     # select * from movie WHERE id = xx
 
-    form = CopropForm(request.POST or None, instance=copropietario)
+    form = CopropForm(request.POST or None, instance=user)
 
     if form.is_valid() :
         form.save()
@@ -68,7 +68,6 @@ def editar_copro(request):
 
     return render_to_response('noticias/editar_copro.html', {'user': request.user, 'form':form}, request)
 
-@login_required()
 def signup_copropietario(request):
     
 

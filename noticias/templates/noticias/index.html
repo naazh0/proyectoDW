@@ -58,11 +58,18 @@
     <div class="container">
       <div class="col-lg-9 col-sm-12">
         <div class="well row">
-        <h3>Bienvenido {{user.first_name}}, acá puedes ver los copropietarios.</h3>
+        {% if user.is_staff == True %}
+        <h3>Bienvenido {{user.first_name}}, acá puedes ver los demás administradores y copropietarios.</h3>
+        {% endif %}
+        {% if user.is_staff == False %}
+        <h3>Bienvenido {{user.first_name}}, acá puedes ver y editar tus datos.</h3>
+        {% endif %}
+        {% if user.is_staff == True %}
           <table class="table table-striped">
                       <thead>
                         <tr style="background:yellow">
                           
+                          <td>User</td>
                           <td>Nombre</td>
                           <td>Apellido</td>
                           <td>Correo</td>
@@ -74,6 +81,7 @@
                         {% for x in copropietario %}
                         <tr>
                           
+                          <td>{{x.username}}</td>
                           <td>{{x.first_name}}</td>
                           <td>{{x.last_name}}</td>
                           <td>{{x.email}}</td>
@@ -90,6 +98,13 @@
                   {% if user.is_staff == True %}    
           <p class="text-right"><a href="{% url 'signup_administrador' %}"><button class="btn btn-primary btn-lg">Agregar administrador</button></a></p>
           {% endif %}
+          {% endif %}
+          {% if user.is_staff == False %}
+          <p>Nombre:  {{user.first_name}}</p>
+          <p>Apellido: {{user.last_name}}</p>
+          <p>Correo: {{user.email}}</p>
+          {% endif %}
+
         </div>
         <br><br><br><br><br><br><br><br>
       </div>
