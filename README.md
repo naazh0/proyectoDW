@@ -8,3 +8,5 @@ Se cuenta con un apartado que tiene todos los datos necesarios del copropietario
 El usuario: admin4 y la contraseña: asdf1234 son necesarios para entrar a la gestión de administrador y copropietarios.
 
 El usuario: rodrigo y la contraseña: asdf1234 son para acceder a un perfil de copropietario.
+
+Por motivoso que no podemos resolver, el proyecto está alojado en el branch "Fabian2", por lo que se deberá clonar desde ese branch.
