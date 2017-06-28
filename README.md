@@ -1,14 +1,16 @@
-# ProyectoDW#
+# ProyectoDW #
 
-##Problemática encontrada.##
+## Problemática encontrada. ##
 
 La gestión de copropietarios en los condominios deja mucho que desear actualmente, puesto que la mayoría de los administrador almacenan la información de éstos en papeles o en Excels. Por lo que existe una necesidad de implementación de tecnologías.
 
-##Solución##
+## Solución ##
 
 La solución que se propuso es para el problema encontrado, es el desarrollo de una aplicación web que almacene todos los datos pertinenntes, tanto de administradores y copropietarios. En ella se puede gestionar los datos de éstos.
 
-Se cuenta con un apartado que tiene todos los datos necesarios del copropietarios y se pueden actualizar en caso de cambios.
+Se cuenta con un apartado que tiene todos los datos necesarios del administrador y del copropietario.
+
+### Instrucciones ###
 
 El usuario: admin4 y la contraseña: asdf1234 son necesarios para entrar a la gestión de administrador y copropietarios.
 
